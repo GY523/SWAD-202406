@@ -10,6 +10,7 @@ session_start();
 <body>
 <?php
 require('database.php');
+
 if (isset($_POST['email'])){
 $email = stripslashes($_REQUEST['email']);
 $email = mysqli_real_escape_string($con,$email);
@@ -24,6 +25,7 @@ $result = mysqli_query($con,$query) or die(mysqli_error($con));
 $rows = mysqli_num_rows($result);
 if($rows==1){
 $_SESSION['email'] = $email;
+$_SESSION['username']=$username;
 header("Location: index.php");
 exit();
 }else{
