@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Student Feedback Form
+        </title>
+    </head>
+    <body>
+        <h1>Student Feedback Form</h1>
+        <form action="submit_feedback.php" method="post">
+            <label for="name">Student's Name</label>
+            <input type="text" name="name" id="name" required>
+            <br>
+            <label for="crsCode">Course Code</label>
+            <select name="crsCode" id="crsCode">
+                <option value="">Select Course</option>
+                <option value="UCCN3034">UCCN3034</option>
+            </select>
+            <br>
+            <label >Overall Satisfaction</label>
+            <input type="radio" name="satisfaction" value="very satisfied">Very satisfied
+            <input type="radio" name="satisfaction" value="satisfied">satisfied
+            <input type="radio" name="satisfaction" value="neutral">neutral
+            <input type="radio" name="satisfaction" value="dissatisfied">dissatisfied
+            <input type="radio" name="satisfaction" value="very dissatisfied">very dissatisfied
+            <br>
+
+            <label >Aspect of the course that you found useful(Select all that apply)</label>
+            <input type="checkbox" name="aspects[]" value="Lectures">Lectures
+            <input type="checkbox" name="aspects[]" value="Assignments">Assignments
+            <input type="checkbox" name="aspects[]" value="Practical">Practical
+            <input type="checkbox" name="aspects[]" value="Exams">Exams
+            <br>
+            
+            <label >Additional comments:</label>
+            <textarea name="comments" id="comments" cols="30" rows="10">comments</textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+    </body>
+</html>
