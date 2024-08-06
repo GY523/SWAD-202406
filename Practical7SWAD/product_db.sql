@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2024 at 07:58 AM
+-- Generation Time: Aug 06, 2024 at 08:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,6 +47,26 @@ INSERT INTO `category` (`id`, `name`, `description`, `date_record`, `quantity`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `user_input` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `filename`, `user_input`) VALUES
+(10, 'New Text Document.txt', 'he'),
+(11, 'testing.txt', 'test');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -71,6 +91,30 @@ INSERT INTO `products` (`id`, `product_name`, `price`, `quantity`, `date_record`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test_error`
+--
+
+CREATE TABLE `test_error` (
+  `id` int(11) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `phone_no` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `test_error`
+--
+
+INSERT INTO `test_error` (`id`, `message`, `phone_no`, `email`, `user_id`) VALUES
+(5, 'hi', '123123', 'funncha', 2),
+(6, 'hi', '123123123', '@gmail', 2),
+(7, 'hi', '123123', 'funncha', 2),
+(8, 'hi', '123123', 'funncha', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -90,6 +134,28 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `reg_date`) VALUES
 (1, 'GRAY', 'funnychwa523@gmail.com', '735dbe14ca7c12da87760c43c8f57dc1', '2024-07-09 06:46:08'),
 (2, 'chwa', 'funnychwa523@gmail.com', '4297f44b13955235245b2497399d7a93', '2024-07-09 07:27:52');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_profile`
+--
+
+CREATE TABLE `user_profile` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_profile`
+--
+
+INSERT INTO `user_profile` (`id`, `full_name`, `address`, `phone`, `user_id`) VALUES
+(5, 'Chwa Guang Yao', 'jln limbongan', '01112345678', 2),
+(6, 'niubi', 'johober', '128272333', 2);
+
 --
 -- Indexes for dumped tables
 --
@@ -101,16 +167,38 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `test_error`
+--
+ALTER TABLE `test_error`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_error_ibfk_1` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -123,16 +211,50 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `test_error`
+--
+ALTER TABLE `test_error`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `test_error`
+--
+ALTER TABLE `test_error`
+  ADD CONSTRAINT `test_error_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
