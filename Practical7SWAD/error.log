@@ -1,0 +1,12 @@
+[06-Aug-2024 08:18:24 Europe/Berlin] Error: [2] Undefined variable $undefinedVariable in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 26
+[06-Aug-2024 08:18:24 Europe/Berlin] PHP Fatal error:  Uncaught DivisionByZeroError: Division by zero in C:\xampp\htdocs\Practical7SWAD\exercise1.php:38
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 38
+[06-Aug-2024 08:18:53 Europe/Berlin] Error: [2] Undefined variable $undefinedVariable in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 26
+[06-Aug-2024 08:20:13 Europe/Berlin] Error: [2] Undefined variable $undefinedVariable in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 27
+[06-Aug-2024 08:20:30 Europe/Berlin] Error: [2] Undefined variable $undefinedVariable in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 27
+[06-Aug-2024 08:20:30 Europe/Berlin] PHP Fatal error:  Uncaught DivisionByZeroError: Division by zero in C:\xampp\htdocs\Practical7SWAD\exercise1.php:39
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\Practical7SWAD\exercise1.php on line 39
